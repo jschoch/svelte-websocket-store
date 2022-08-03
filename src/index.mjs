@@ -54,7 +54,8 @@ export function websocketStore(url, initialValue, socketOptions) {
     socket = new WebSocket(url, socketOptions);
 
     socket.onmessage = event => {
-      initialValue = JSON.parse(event.data);
+      //initialValue = JSON.parse(event.data);
+      initialValue = event.data;
       subscriptions.forEach(subscription => subscription(initialValue));
     };
 
